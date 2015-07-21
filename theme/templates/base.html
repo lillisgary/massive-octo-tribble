@@ -108,6 +108,9 @@
 {% block r-w %}
 {% block r_w %}
 <div class="col-md-3 right">
+    {% nevercache %}
+    {% include "includes/user_panel.html" %}
+    {% endnevercache %}
     {% search_form "all" %}
     <div class="panel panel-default">
     <div class="panel-body">
