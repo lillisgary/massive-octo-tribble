@@ -16,9 +16,10 @@
 {% endifinstalled %}
 
 {% compress css %}
-<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+
 <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
-<link rel="stylesheet" href="{% static "css/bootstrap-theme.css" %}">
+
+<link rel="stylesheet" href="{% static "css/bootstrap_cyborg_dark.css" %}">
 <link rel="stylesheet" href="{% static "css/carousel.css" %}">
 <link rel="stylesheet" href="{% static "css/addon.css" %}">
 
@@ -127,13 +128,16 @@
 </div>
 </div>
 
-<footer>
+
+
+<footer style="margin-bottom: 0px;" class="panel panel-default">
 <div class="container">
 {% page_menu "pages/menus/footer.html" %}
 
 <div class="row">
 <p class="site-info text-center">
-    {% trans "Powered by" %}
+    <a href="http://www.swanfeather.co.za">{% trans "SwanFeather Software" %}</a>
+    {% trans "powered by" %}
     <a href="http://mezzanine.jupo.org">Mezzanine</a>{% ifinstalled cartridge.shop %},
     <a href="http://cartridge.jupo.org">Cartridge</a>{% endifinstalled %}
     {% trans "and" %}

@@ -12,12 +12,11 @@ $(document).ready(function(){
 });
 </script>
 {% endblock %}
+
 {% block title %}{{ page.title }}{% endblock %}
 
-
-
-
 {% block l_w %}{% endblock %}
+
 {% block middle_class %}<div class="col-xs-12 middle">{% endblock middle_class %}
 {% block main %}
     
@@ -165,7 +164,7 @@ $(document).ready(function(){
         
           {% for porter in page.homepage.porter.all|slice:":4" %}
             <h4><a href="{{ porter.multiport.page_ptr.get_absolute_url }}" style="text-decoration: none;">{{ porter.multiport.title }}</a><a href="{{ porter.multiport.page_ptr.get_absolute_url }}" > 
-            <small><i class="pull-right" style="color: red;">View All</i></small></a></h4>
+            <small><i class="pull-right btn btn-primary btn-xs" >View All</i></small></a></h4>
             <div class="line-separator"></div><br>
             
               <div class="row">
@@ -193,7 +192,47 @@ $(document).ready(function(){
        <div class="text-justify">  
        {{ page.homepage.content|richtext_filters|safe }}
        </div>
-        <!-- //Main Content -->     
+        <!-- //Main Content --><br>
+        
+        <!--Shop Products-->        
+        {% if products %}
+        <h4>Recent Products</h4>
+        
+        <div class="container">
+          <div class="row">
+          
+          {% for product in products|slice:":4" %}
+            {% if product.available %}
+            <div class="col-xs-6 col-md-3">
+            
+              <div class="thumbnail">
+                <img alt="{{ product.title }}" src="{{ MEDIA_URL }}{% thumbnail product.image 238 175 %}">
+                
+                <div class="caption">
+                  <h3>{{ product.title }}</h3> <!--Product label-->
+                  <!--Product description-->
+                  <p>{% editable product.description %}{{ product.description|richtext_filters|safe|truncatewords:10 }}{% endeditable %}</p>       
+                  {% if product.on_sale %}
+                    <p style="text-decoration: line-through;">R{{ product.unit_price }}</p>
+                    <p>{% trans "On sale:" %} R{{ product.sale_price }}</p>
+                  {% else  %}
+                    <p>R{{ product.unit_price }}</p>
+                  {% endif %}
+                  <p><a href="{{ product.get_absolute_url }}" class="btn btn-primary" >View</a></p>
+                  <!--//Product description-->
+                </div>
+                
+              </div>
+              
+            </div>  
+            {% endif %}
+          {% endfor %}
+          
+          </div>
+        </div>
+        
+        {% endif %}
+        <!--//Shop Products-->   
          
 {% endblock %}
 {% block r-w %}{% endblock r-w %}

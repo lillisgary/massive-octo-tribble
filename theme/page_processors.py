@@ -1,4 +1,5 @@
 from mezzanine.pages.page_processors import processor_for
+from cartridge.shop.models import Product
 from .models import Portfolio, PortfolioItem, PortfolioItemCategory, HomePage, TempPortfolio, Portfolios
 
 @processor_for(Portfolios)
@@ -45,5 +46,8 @@ def home_processor(request, page):
     temp_portfolio = TempPortfolio.objects.published(
         for_user=request.user).select_related().all()
     temp_portfolio = temp_portfolio.filter(parent=page) ##TempPorfolio should be nested under the HomePage
+    prods = Product.objects.published(
+        for_user=request.user).order_by('-publish_date')[:5]
     return {'items': items, 'portfolio': portfolio,
-            'temp_portfolio': temp_portfolio}
+            'temp_portfolio': temp_portfolio,
+            'products': prods}
