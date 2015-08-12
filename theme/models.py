@@ -10,9 +10,11 @@ class HomePage(Page, RichText):
 
     quote = models.CharField(max_length=2000, blank=True, null=True,
 	    help_text="Quote text (optional)")
+    quote_author = models.CharField(max_length=2000, blank=True, null=True,
+	    help_text="Quote authors name")
     quote_link = models.CharField(max_length=2000, blank=True, null=True,
 	    help_text="link to the author of the quote's site (optional)")
-	
+	    
     class Meta:
 		verbose_name = _("Home page")
 		verbose_name_plural = _("Home pages")
