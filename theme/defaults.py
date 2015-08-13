@@ -16,11 +16,11 @@ register_setting(
     label=_("Theme skins"),
     description=_("The theme's skin changer"),
     editable=True,
-    default=_("css/bootstrap_cyborg_dark.css",),
+    default=_("bootstrap_cyborg_dark.css",),
     choices=(
-        (_("css/bootstrap_journal_light.css"), _("css/bootstrap_journal_light.css")),
-        (_("css/bootstrap_lumen.css"), _("css/bootstrap_lumen.css")),
-        (_("css/bootstrap_cyborg_dark.css"), _("css/bootstrap_cyborg_dark.css")),
+        (_("bootstrap_journal_light.css"), _("bootstrap_journal_light.css")),
+        (_("bootstrap_lumen.css"), _("bootstrap_lumen.css")),
+        (_("bootstrap_cyborg_dark.css"), _("bootstrap_cyborg_dark.css")),
     ),
 )
 
