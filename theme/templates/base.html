@@ -19,7 +19,11 @@
 
 <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
 
-<link rel="stylesheet" href="{% static "css/bootstrap_cyborg_dark.css" %}">
+{% if settings.THEME_SKINS %}
+  <link rel="stylesheet" href="{% static ""|add:settings.THEME_SKINS %}">
+{% else %}
+  <link rel="stylesheet" href="{% static "css/bootstrap_cyborg_dark.css" %}">
+{% endif %}
 <link rel="stylesheet" href="{% static "css/carousel.css" %}">
 <link rel="stylesheet" href="{% static "css/addon.css" %}">
 
