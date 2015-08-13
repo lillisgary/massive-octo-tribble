@@ -94,8 +94,18 @@ $(document).ready(function(){
 <blockquote class="pull-right">
 
   <p>{{ page.homepage.quote }}</p>
-
-  <small>by <cite><a href="{{ page.homepage.quote_link }}" target="_blank" >{{ page.homepage.quote_author }}</a></cite></small>
+ 
+  {% if page.homepage.quote_author %}
+  <small>by <cite>
+    {% if page.homepage.quote_link %}
+    <a href="{{ page.homepage.quote_link }}" target="_blank" >{{ page.homepage.quote_author }}</a>
+    {% else %}
+      {{ page.homepage.quote_author }}
+    {% endif %}
+  </cite></small>
+  {% else %}
+  <small>by <cite>Anonymous</cite></small>
+  {% endif %}
 
 </blockquote>
 </div>
