@@ -19,7 +19,7 @@ from __future__ import absolute_import, unicode_literals
 
 # If True, the checkout process is split into separate
 # billing/shipping and payment steps.
-# SHOP_CHECKOUT_STEPS_SPLIT = True
+SHOP_CHECKOUT_STEPS_SPLIT = False
 
 # If True, the checkout process has a final confirmation step before
 # completion.
@@ -65,6 +65,8 @@ from __future__ import absolute_import, unicode_literals
 # control how the options should be ordered in the admin,
 # eg for "Colour" then "Size" given the above:
 # SHOP_OPTION_ADMIN_ORDER = (2, 1)
+
+SHOP_PAYMENT_STEP_ENABLED = False
 
 ######################
 # MEZZANINE SETTINGS #
