@@ -7,7 +7,10 @@ from mezzanine.core.models import RichText, Orderable, Slugged
 from mezzanine.utils.models import upload_to
 
 class HomePage(Page, RichText):
-
+	
+    logo = FileField(verbose_name=_("Logo"),
+        upload_to=upload_to("theme.HomePage.image", "logo"),
+        format="Image", max_length=255, null=True, blank=True)
     quote = models.CharField(max_length=2000, blank=True, null=True,
 	    help_text="Quote text (optional)")
     quote_author = models.CharField(max_length=2000, blank=True, null=True,

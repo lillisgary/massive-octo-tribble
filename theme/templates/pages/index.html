@@ -25,7 +25,11 @@ $(document).ready(function(){
                     <div class="row">
                     
                       <div class="col-md-4 pull-left">
-                        <div class="logo"><a href="/"><img src="{% static "img/django.gif" %}" alt="" /></a></div>                                
+                        {% if page.homepage.logo %}
+                          <div class="logo"><a href="/"><img src="{{ MEDIA_URL }}{% thumbnail page.homepage.logo 1920 690 %}" alt="{{ settings.SITE_TITLE }}" /></a></div>
+                        {% else %}
+                          <div class="logo"><a href="/">{{ settings.SITE_TITLE }}</a></div>
+                        {% endif %}                                
                         <div><h5>{{ settings.SITE_TAGLINE }}</h5></div>                        
                       </div>
                                                  
